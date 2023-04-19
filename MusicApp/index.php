@@ -81,28 +81,28 @@ if (!empty($_SESSION["id"])) {
                 </li>
             </ul>
             <script>
-            $(document).ready(function() {
-                let uID = <?php if (!empty($_SESSION['id'])) {
+                $(document).ready(function() {
+                    let uID = <?php if (!empty($_SESSION['id'])) {
                                     echo $row['u_id'];
                                 } else {
                                     echo "";
                                 } ?>
-                $('#nav_library').on('click', function() {
-                    if (uID != "") {
-                        $('#message-library').show();
-                        let hideMessege = setTimeout(() => {
-                            $('#message-library').hide();
+                    $('#nav_library').on('click', function() {
+                        if (uID != "") {
+                            $('#message-library').show();
+                            let hideMessege = setTimeout(() => {
+                                $('#message-library').hide();
 
-                        }, 3000)
-                        $(".library").hide();
+                            }, 3000)
+                            $(".library").hide();
 
-                    } else {
-                        $(".library").show();
+                        } else {
+                            $(".library").show();
 
-                    }
+                        }
+                    });
+
                 });
-
-            });
             </script>
             <span></span>
             <ul>
@@ -122,28 +122,28 @@ if (!empty($_SESSION["id"])) {
                 </li>
 
                 <script>
-                $(document).ready(function() {
-                    let uID = <?php if (!empty($_SESSION['id'])) {
+                    $(document).ready(function() {
+                        let uID = <?php if (!empty($_SESSION['id'])) {
                                         echo $row['u_id'];
                                     } else {
                                         echo "";
                                     } ?>
-                    $('#nav_playlist').on('click', function() {
-                        if (uID != "") {
-                            $('#message-playlist').show();
-                            let hideMessege = setTimeout(() => {
-                                $('#message-playlist').hide();
+                        $('#nav_playlist').on('click', function() {
+                            if (uID != "") {
+                                $('#message-playlist').show();
+                                let hideMessege = setTimeout(() => {
+                                    $('#message-playlist').hide();
 
-                            }, 3000)
-                            $("#playlist").hide();
+                                }, 3000)
+                                $("#playlist").hide();
 
-                        } else {
-                            $("#playlist").show();
+                            } else {
+                                $("#playlist").show();
 
-                        }
+                            }
+                        });
+
                     });
-
-                });
                 </script>
 
                 <li id="likeMusic">
@@ -171,8 +171,7 @@ if (!empty($_SESSION["id"])) {
 
                 <!-- serach input header -->
                 <div class="search_input">
-                    <input type="text" name="" id="searchInput" placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát,..."
-                        autocomplete="off">
+                    <input type="text" name="" id="searchInput" placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát,..." autocomplete="off">
                     <label for="searchInput">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
@@ -398,14 +397,14 @@ if (!empty($_SESSION["id"])) {
                     </ul>
 
                     <script>
-                    let nav_library = document.querySelectorAll('.library .nav_library li');
-                    nav_library.forEach(item => {
-                        item.addEventListener('click', () => {
-                            document.querySelector('.library .nav_library li.active').classList
-                                .remove('active');
-                            item.classList.add('active');
+                        let nav_library = document.querySelectorAll('.library .nav_library li');
+                        nav_library.forEach(item => {
+                            item.addEventListener('click', () => {
+                                document.querySelector('.library .nav_library li.active').classList
+                                    .remove('active');
+                                item.classList.add('active');
+                            })
                         })
-                    })
                     </script>
 
                     <span class="line"></span>
@@ -662,6 +661,19 @@ if (!empty($_SESSION["id"])) {
                     <input type="file" name="fileUploadMusic" id="fileUploadMusic">
                 </div>
                 <input type="button" value="Đăng">
+            </form>
+            <ion-icon name="close" class="close_form"></ion-icon>
+        </div>
+    </div>
+
+    <div class="form_upload form_upload_music" id="form_upload_avatar">
+        <div>
+            <h3>Upload avatar</h3>
+            <form id="" method="POST" enctype="multipart/form-data">
+                <div class="img_upload">
+                    <input type="file" name="fileUploadMusic" id="fileUploadMusic">
+                </div>
+                <input type="button" value="Lưu">
             </form>
             <ion-icon name="close" class="close_form"></ion-icon>
         </div>
