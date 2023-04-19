@@ -1,0 +1,229 @@
+.container .main_left{
+    width: 15%;
+    min-height: 100vh;
+    position: fixed;
+    background-color: rgba(0,0,0,0.2);
+    left: 0;
+    top: 0;
+    z-index: 99995;
+    font-weight: bold;
+}
+
+.main_left .logo{
+    text-align: center;
+}
+.main_left .logo span{
+    display: inline-block;
+    font-size: 50px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+}
+
+.main_left .logo span:nth-child(1){
+    color: lightblue;
+    transform: rotate(20deg);
+}
+.main_left .logo span:nth-child(2){
+    color: green;
+    transform: rotate(-10deg);
+
+}
+.main_left .logo span:nth-child(3){
+    color: orange;
+    transform: rotate(-10deg);
+
+}
+.main_left .logo span:nth-child(4){
+    color: rgb(200, 96, 96);
+    transform: rotate(10deg);
+
+}
+
+.main_left ul{
+    width: 100%;
+    margin: 12px 0;
+}
+
+.main_left ul li{
+    width: 100%;
+}
+.main_left ul li#nav_library{
+    position: relative;
+}
+.main_left ul li .message-library{
+    position: absolute;
+    width: 200px;
+    background: linear-gradient(to top right,#355c7d,#6c5b7b,#c06c84);
+    border-radius: 6px;
+    padding: 10px;
+    right: -60%;
+    top: 30px;
+    color: white;
+    display: none;  
+}
+.close-message{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+}
+.main_left ul li .message-library p{
+    color: white;
+    padding: 4px 0;
+}
+.message-library .nav-library{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.message-library .nav-library button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+.message-library .nav-library button:last-child{
+    border: 1px solid white;
+    border-radius: 30px;
+    text-align: center;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+.message-library .nav-library button:last-child:hover{
+    transform: scale(1.1);
+    background: rgba(0,0,0,0.1);
+}
+.nav-library button > a{
+    color: white;
+}
+.nav-library button:last-child a{
+    display: block;
+    padding: 8px 10px;
+    
+}
+
+.nav-library button#latter{
+    color: white;
+}
+.nav-library button#latter:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+.main_left ul li:hover{
+    cursor: pointer;
+    background: rgba(130, 128, 128,0.2);
+}
+
+
+
+.main_left ul li.active{
+    background: rgba(130, 128, 128,0.2);
+    border-right: 3px solid aqua;
+    display: block;
+}
+.main_left ul li > a{
+    padding: 10px 0px 10px 16px;
+    display: block; 
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.main_left ul li ion-icon{
+    width: 40px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.main_left > span{
+    display: block;
+    height: 1px;
+    margin: 0 30px;
+    background: rgba(130, 128, 128,0.2);
+
+} 
+
+/* create playlist */
+#nav_playlist{
+    position: relative;
+}
+.form_upload{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 999999;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    display: none;
+}
+.form_upload > div{
+    width: 300px;
+    background: linear-gradient(to top right,#355c7d,#6c5b7b,#c06c84);
+    padding: 10px ;
+    border-radius: 10px;
+    position: relative;
+
+}
+.form_upload > div h3{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+.form_upload > div input:not(input[type="file"]){
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(0,0,0,0.2);
+    border: none;
+    outline: none;
+    margin: 10px 0;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+}
+.form_upload > div input[type="button"]{
+    background-color: #c06c84;
+    opacity: .7;
+    cursor: pointer;
+}
+.form_upload > div input[type="button"]:hover{
+    opacity: 1;
+}
+.form_upload ion-icon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1;
+}
+.form_upload ion-icon:hover{
+    opacity: .7;
+}
+.form_upload .img_upload{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+.form_upload .img_upload label{
+    width: 50%;
+    font-size: 14px;
+    font-weight: bold;
+}
+.form_upload #fileUpload{
+    padding: 10px;
+    color: white;
+    font-size: 10px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 20px;
+}
