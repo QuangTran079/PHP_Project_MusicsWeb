@@ -2,56 +2,56 @@
 // =========================================== DATA ==================================
 let  allMusic = [
     {
-        id: "song1",
+        id: "1",
         name: "Khuất lối",
         artist: "H Kray",
         img: "./image/song1.jpg",
         src: "https://mp3.filmisongs.com/go.php?id=Damn%20Song%20Raftaar%20Ft%20KrSNa.mp3",
     },
     {
-        id: "song2",
+        id: "2",
         name: "Sao Cũng Được",
         artist: "Thành Đạt",
         img: "./image/song2.jpg",
-        src: "musics/song2.mp3",
+        src: "../musics/VeVoiEmDi-TienTien-4850318.mp3",
     },
     {
-        id: "song3",
+        id: "3",
         name: "Cuối Cùng Thì",
         artist: "Jack",
         img: "./image/song3.jpg",
-        src: "musics/song3.mp3",
+        src: "../musics/LaAnh-PhamLichBMZ-8811329.mp3",
     },
     {
-        id: "song4",
+        id: "4",
         name: "Tiếng Pháo Tiễn Người",
         artist: "Hùng Quân",
         img: "./image/song4.jpg",
         src: "musics/song4.mp3",
     },
     {
-        id: "song5",
+        id: "5",
         name: "Thay Tôi Yêu Cô Ấy",
         artist: "Thanh Hưng",
         img: "./image/song5.jpg",
         src: "musics/song5.mp3",
     },
     {
-        id: "song6",
+        id: "6",
         name: "Yêu Khác Thương Hại",
         artist: "Thanh Hưng",
         img: "./image/song6.jpg",
         src: "musics/song6.mp3",
     },
     {
-        id: "song7",
+        id: "7",
         name: "Ai Đợi Mình Được Mãi",
         artist: "Thanh Hưng",
         img: "./image/song7.jpg",
         src: "musics/song7.mp3",
     },
     {
-        id: "song8",
+        id: "8",
         name: "Chắc Vì Mình Chưa Tốt",
         artist: "Thanh Hưng",
         img: "./image/song8.jpg",
@@ -133,27 +133,9 @@ navLibrary.addEventListener('click',()=>{
 })
 
 navPlaylist.addEventListener('click',()=>{
-    document.getElementById('playlist').style.display = 'flex';
+    document.getElementById('playlist').classList.add('active');
 })
 
-document.querySelectorAll('.close_form').forEach(item=>{
-    item.addEventListener('click',e=>{
-        if(e.target === e.currentTarget){
-            if( document.getElementById('form_upload_music').classList.contains('active'))
-                document.getElementById('form_upload_music').classList.remove('active');
-            else{
-                document.getElementById('playlist').style.display = 'none';
-            }
-    
-        }
-    })
-})
-document.getElementById('playlist').addEventListener('click',e=>{
-    if(e.target === e.currentTarget){
-        document.getElementById('playlist').style.display = 'none';
-    
-        }
-})
 
 const discoverMusic = document.querySelector('#discover .list_music');
 const img_music = document.querySelector('.play_music .audio img');
@@ -315,7 +297,7 @@ function load_music_home(musics){
     handlePlayMusic(list_home_music_spotify,allMusic);
 }
 
-// ================================================= MAIN ======================================================//l
+// ================================================= MAIN ======================================================//ls
 function Main() {
     load_music_home(allMusic);
     load_music_discover(allMusic);
@@ -337,16 +319,38 @@ function Main() {
     handlePlayMusic(list_music_handle_library,allMusic);
 
     const list_play_handle_music = document.querySelectorAll('.list_play_music .next_music_list ul li .playMusic');
-    handlePlayMusic(list_play_handle_music,allMusic);   
+    handlePlayMusic(list_play_handle_music,allMusic);       
 
-
-    // add music library
-    document.querySelectorAll('.add_library').forEach(item=>{
-        item.addEventListener('click',()=>{
-                if(item.closest('ul.render')){
-                    item.closest('ul.render').classList.add('active');
+    $(document).ready(function(){
+        $(".add_library").on('click',function(){
+            if($(this).closest('ul.render')){
+                $(this).closest('ul.render').addClass('active');
+            }
+            $(this).addClass('active');
+            // if(!arrLikeListMusic.includes($(this).closest('li').attr('index'))){
+            //     ;
+            // }
+            $.ajax({
+                url: '../php/addLibrary.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    data:$(this).closest('li').attr('index')
                 }
-                item.classList.toggle('active');
+            }).done(function(ketqua) {
+                if(ketqua == "success"){
+                    console.log(ketqua);
+                }
+                else if(ketqua == "exited"){
+                    console.log(ketqua);
+                }
+                else if(ketqua == "error"){
+                    console.log(ketqua);
+                }
+                else{
+                    console.log(ketqua);
+                }
+            });
         })
     })
 
@@ -374,6 +378,19 @@ function Main() {
              }
         }
     })
+    document.querySelectorAll('.close_form').forEach(item=>{
+        item.addEventListener('click',e=>{
+            if(e.target === e.currentTarget){
+                if( e.target.closest('.form_upload').classList.contains('active'))
+                    e.target.closest('.form_upload').classList.remove('active');
+            }
+        })
+    })
+   
+    
+    document.querySelector('.imgUser').addEventListener('click',()=>{
+        document.getElementById('form_upload_avatar').classList.add('active');
+    })
     document.querySelector('.close_profile ion-icon').addEventListener('click',(e)=>{
         if(e.target === e.currentTarget)
             document.querySelector('.update_profile').classList.toggle('active');
@@ -394,11 +411,13 @@ function Main() {
             document.getElementById('form_upload_music').classList.add('active');
         }
     })
-    document.getElementById('form_upload_music').addEventListener('click',(e)=>{
-        if(e.target === e.currentTarget){
-            document.getElementById('form_upload_music').classList.remove('active');
-        }
-
+    document.querySelectorAll('.form_upload').forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            if(e.target === e.currentTarget){
+                e.target.classList.remove('active');
+            }
+    
+        })
     })
     // random music
     function ranDomMusic(musics,elementAll){
@@ -419,6 +438,7 @@ function Main() {
     }
     ranDomMusic(allMusic,list_music_handle_library);
 
+    // upload avatar
 };
 Main();
 
@@ -665,7 +685,7 @@ function handlePlayMusic(elementAll,musics){
             isPlaying = true;
             let currentIndexMusic = 0;
             // resetLayout();
-            id_element = 'song'+(index+1);
+            id_element = index+1;
             musics.forEach((music,indexMusic,arr)=>{
                 if(id_element == music.id){
                     handleVideo(arr,indexMusic,arrEle[indexMusic]);
@@ -698,8 +718,9 @@ function handlePlayMusic(elementAll,musics){
 }
 
 
-const elemSearch = document.getElementById('searchInput');
 
+// search
+const elemSearch = document.getElementById('searchInput');
 let html = '';
 elemSearch.addEventListener('input',e=>{
     let searchVal = e.target.value.toLowerCase().trim();
@@ -733,6 +754,3 @@ elemSearch.addEventListener('input',e=>{
 
     }
 })
-
-
-// add_playlist
